@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TimPhongTro.Models.DONTHUE>
+
+@{
+    ViewBag.Title = "Danh sách phòng đã thuê";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-banner hero-banner-sm">
+    <div class="container text-center">
+        <h2>Phòng đã thuê</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Phòng đã thuê</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<br/>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="white-box">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Mã khách hàng</th> <!--Ten nguoi thue-->
+                                    <th>Mã phòng</th>
+                                    <th>Tình trạng</th>
+                                    <th>Ngày nhận</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var dt in Model)
+                                {
+                                    <tr>
+                                        <td>@dt.MaKH</td>
+                                        <td>@dt.MaPhong</td>
+                                        <td>@dt.TinhTrang</td>
+                                        <td>@dt.NgayNhan</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ChiTietPhong","PhongNhaOGhep",new { id=dt.MaPhong})'">Chi tiết</button>
+                                            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ChiTietPhong","PhongNhaOGhep",new { id=dt.MaPhong})'">Hủy</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    =
+</div>
+
+
+
+

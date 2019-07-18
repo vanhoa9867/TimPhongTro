@@ -1,0 +1,83 @@
+﻿@model TimPhongTro.Models.PHONGTRO
+
+@{
+    ViewBag.Title = "Sửa thông tin phòng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero-banner hero-banner-sm">
+    <div class="container text-center">
+        <h2>Chỉnh sửa thông tin phòng</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa thông tin phòng</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<br />
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="white-box">
+                    @using (Html.BeginForm("ChinhSua", "NguoiDung", FormMethod.Post, new { id = Model.MaPhong }))
+                    {
+                        <div class="form-group">
+                            <label class="col-md-12">Số phòng:</label>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(Model => Model.SoPhong, new { @class = "form-control form-control-line", @value = "Model.SoPhong" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Diện tích:</label>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(Model => Model.DienTich, new { @class = "form-control form-control-line", @value = "Model.DienTich" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Địa chỉ:</label>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(Model => Model.DiaChi, new { @class = "form-control form-control-line", @value = "Model.DiaChi" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Giá thuê:</label>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(Model => Model.GiaThue, new { @class = "form-control form-control-line", @value = "Model.GiaThue" })
+                            </div>
+                        </div>
+                        if (Model.Loai == "Ở ghép")
+                        {
+                            <div class="form-group">
+                                <label class="col-md-12">Số người ở: </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(Model => Model.SoNguoiO, new { @class = "form-control form-control-line", @value = "Model.SoNguoiO" })
+                                </div>
+                            </div>
+                        }
+                        <div class="form-group">
+                            <label class="col-md-12">Mô tả:</label>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(Model => Model.MoTa, new { @class = "form-control form-control-line", @value = "Model.MoTa" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-success">Cập Nhật</button>
+                                <a class="btn btn-success" href="@Url.Action("ThongTin","NguoiDung")">Huỷ</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+</div>
+
+

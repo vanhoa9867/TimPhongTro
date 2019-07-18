@@ -1,0 +1,87 @@
+﻿@model TimPhongTro.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "XoaNguoiDung";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h3 class="box-title">Xóa người dùng</h3>
+                        <p class="text-muted">Bạn có thật sự muốn xóa người dùng này?</p>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Tên khách hàng
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TenKH)
+                                </dd>
+
+                                <dt>
+                                    Tài khoản
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TaiKhoan)
+                                </dd>
+
+                                <dt>
+                                    Số điện thoại
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Sdt)
+                                </dd>
+
+
+                                <dt>
+                                    Email
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+                                <dt>
+                                    Địa chỉ
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.DiaChi)
+                                </dd>
+
+                                <dt>
+                                    Giới tính
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.GioiTinh)
+                                </dd>
+                            </dl>
+                            <hr />
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                                    <a href="@Url.Action("NguoiDung", "QLyTaiKhoan")">
+                                        <button type="button" class="btn btn-default">Trở về</button>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

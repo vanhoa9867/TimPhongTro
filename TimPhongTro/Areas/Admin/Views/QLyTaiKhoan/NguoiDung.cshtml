@@ -1,0 +1,80 @@
+﻿@model IEnumerable<TimPhongTro.Models.NGUOIDUNG>
+
+@{
+    ViewBag.Title = "NguoiDung";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title"></h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Quản trị</a></li>
+                    <li class="active">Quản lí thông tin người dùng</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Thông tin người dùng</h3>
+                    <p class="text-muted">Thêm người dùng mới</p>
+                    <a href="@Url.Action("ThemMoiNguoiDung","QLyTaiKhoan")">
+                        <button type="button" title="Thêm mới" class="btn btn-success">
+                            Thêm
+                        </button>
+                    </a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Mã khách hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Tài khoản</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Giới tính</th>
+                                    <th>Tùy chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var nd in Model)
+                                {
+                                    <tr>
+                                        <td>@nd.MaKH</td>
+                                        <td>@nd.TenKH</td>
+                                        <td>@nd.TaiKhoan</td>
+                                        <td>@nd.Sdt</td>
+                                        <td>@nd.Email</td>
+                                        <td>@nd.DiaChi</td>
+                                        <td>@nd.GioiTinh</td>
+                                        <td>
+                                            <a href="@Url.Action("SuaNguoiDung","QLyTaiKhoan",new { id = nd.MaKH })">
+                                                <button type="button" rel="tooltip" title="Chỉnh sửa" class="btn btn-link btn-sm">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </a>
+                                            <a href="@Url.Action("XoaNguoiDung","QLyTaiKhoan",new { id = nd.MaKH })">
+                                                <button type="button" rel="tooltip" title="Xóa bỏ" class="btn btn-link btn-sm">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>

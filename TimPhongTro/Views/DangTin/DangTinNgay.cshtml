@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "DangTinNgay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="section-padding bg-gray">
+    <div class="container">
+        <div class="section-intro text-center pb-98px">
+            <p class="section-intro__title">Bạn đang cần gì?</p>
+            <h2 class="primary-text">Timphongtro.com sẽ giúp bạn!</h2>
+            <img src="~/Content/img/home/section-style.png" alt="">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center card-priceTable">
+                    <div class="priceTable-header">
+                        <h3>Tìm người ở ghép</h3>
+                    </div>
+                    <ul class="priceTable-list">
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Bạn ở thân thiện
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Vui vẻ
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Hoạt bát
+                        </li>
+
+                    </ul>
+                    <div class="priceTable-footer">
+                        <a class="button" href="@Url.Action("OGhep","DangTin")">Đăng tin ngay</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center card-priceTable">
+                    <div class="priceTable-header">
+                        <h3>Cho thuê nhà</h3>
+                    </div>
+                    <ul class="priceTable-list">
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Thuận tiện
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Không gian thoáng
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Gần trung tâm
+                        </li>
+
+                    </ul>
+                    <div class="priceTable-footer">
+                        <a class="button" href="#">Đăng  tin ngay</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center card-priceTable">
+                    <div class="priceTable-header">
+                        <h3>Cho thuê phòng</h3>
+                    </div>
+                    <ul class="priceTable-list">
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Chủ trọ thân thiện
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> Nơi ở lí tưởng
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span> An toàn tiện lợi
+                        </li>
+
+                    </ul>
+                    <div class="priceTable-footer">
+
+                        <a class="button" href="@Url.Action("PhongTro","DangTin")">Đăng tin ngay</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

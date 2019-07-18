@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TimPhongTro.Models.PHONGTRO>
+
+@{
+    ViewBag.Title = "Tin đã đăng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-banner hero-banner-sm">
+    <div class="container text-center">
+        <h2>Tin đã đăng</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tin đã đăng</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section class="section-margin mb-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+                <div class="scheduleTab">
+                    @foreach (var item in Model)
+                    {
+                        if (item.Loai == "Phòng trọ")
+                        {
+                            <div class="schedule-card">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <div class="card-identity">
+                                            <img src="~/@item.Anh" alt="">
+                                            <h3>@item.GiaThue</h3>
+                                            <p>@item.DienTich m2</p>
+                                            <p>@item.Loai</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 align-self-center">
+                                        <div class="schedule-content">
+                                            <p class="schedule-date">@item.NgayCapNhat</p>
+                                            <a class="schedule-title" href="@Url.Action("ChiTietPhong","PhongNhaOGhep",new { id = item.MaPhong})">
+                                                <h3>@item.DiaChi</h3>
+                                            </a>
+                                            <p>@item.MoTa</p>
+                                            <a>@item.TinhTrang</a>
+                                            <a>@item.DaNhan</a>
+                                            <br />
+                                            @if(@item.DaNhan == null)
+                                            {
+                                            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ChinhSua","NguoiDung",new { id = item.MaPhong})'">Chỉnh sửa</button>
+                                            }
+                                            <button type="button" class="btn btn-primary" onclick="/">Xóa bài đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        if (item.Loai == "Ở ghép")
+                        {
+                            <div class="schedule-card">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <div class="card-identity">
+                                            <img src="@item.Anh" alt="">
+                                            <h3>@item.GiaThue</h3>
+                                            <p>@item.DienTich m2</p>
+                                            <p>@item.Loai</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 align-self-center">
+                                        <div class="schedule-content">
+                                            <p class="schedule-date">@item.NgayCapNhat</p>
+                                            <a class="schedule-title" href="@Url.Action("ChiTietPhong","PhongNhaOGhep",new { id = item.MaPhong})">
+                                                <h3>@item.DiaChi</h3>
+                                            </a>
+                                            <p>@item.MoTa</p>
+                                            <a>@item.TinhTrang</a>
+                                            <a>@item.DaNhan</a>
+                                            <br />
+                                            @if(@item.DaNhan == null)
+                                            {
+                                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ChinhSua","NguoiDung",new { id = item.MaPhong})'">Chỉnh sửa</button>
+                                            }
+                                            <button type="button" class="btn btn-primary" onclick="/">Xóa bài đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

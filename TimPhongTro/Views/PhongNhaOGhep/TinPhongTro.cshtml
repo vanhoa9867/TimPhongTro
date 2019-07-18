@@ -1,0 +1,162 @@
+﻿@model IEnumerable<TimPhongTro.Models.PHONGTRO>
+@{
+    ViewBag.Title = "Tin phòng trọ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-banner hero-banner-sm">
+    <div class="container text-center">
+        <h2>Những phòng còn trống</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Những phòng còn trống</li>
+            </ol>
+        </nav>
+        <div class="s009">
+            <form>
+                <div class="inner-form">
+                    <div class="basic-search">
+                        <div class="input-field">
+                            <input id="txtkeyword" type="text" name="keyword" placeholder="Nhập nơi cần tìm.." />
+                            <div class="icon-wrap">
+                                <svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advance-search">
+                        <div class="container">
+                            <div class="row">
+                                <div class="result-count" style="margin: auto;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<section class="section-margin mb-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+                <div class="scheduleTab">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item text-center">
+                            <a class="active" data-toggle="tab" href="#day2">
+                                <h4>Phòng trọ</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a data-toggle="tab" href="#day3">
+                                <h4>Ở ghép</h4>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="day2" class="tab-pane active" style="margin-bottom: 20px">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Loai == "Phòng trọ")
+                                {
+                                    <div class="schedule-card">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-3">
+                                                <div class="card-identity">
+                                                    <img src="~/@item.Anh" alt="">
+                                                    <h3>@item.GiaThue</h3>
+                                                    <p>@item.DienTich</p>
+                                                    <p>@item.Loai</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 align-self-center">
+                                                <div class="schedule-content">
+                                                    <p class="schedule-date">@item.NgayCapNhat</p>
+                                                    <a class="schedule-title" href="@Url.Action("ChiTietPhong", "PhongNhaOGhep", new { id = item.MaPhong })">
+                                                        <h3>@item.DiaChi</h3>
+                                                    </a>
+                                                    <p>@item.MoTa</p>
+                                                    <a class="btn btn-outline-light btn-sm" href="@Url.Action("ChiTietPhong", "PhongNhaOGhep", new { id = item.MaPhong })">Chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div id="day3" class="tab-pane" style="margin-bottom: 20px">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Loai == "Ở ghép")
+                                {
+                                    <div class="schedule-card">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-3">
+                                                <div class="card-identity">
+                                                    <img src="~/@item.Anh" alt="">
+                                                    <h3>@item.GiaThue</h3>
+                                                    <p>@item.DienTich</p>
+                                                    <p>@item.Loai</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 align-self-center">
+                                                <div class="schedule-content">
+                                                    <p class="schedule-date">@item.NgayCapNhat</p>
+                                                    <a class="schedule-title" href="@Url.Action("ChiTietPhong", "PhongNhaOGhep", new { id = item.MaPhong })">
+                                                        <h3>@item.DiaChi</h3>
+                                                    </a>
+                                                    <p>@item.MoTa</p>
+                                                    <a class="btn btn-outline-light btn-sm" href="@Url.Action("ChiTietPhong", "PhongNhaOGhep", new { id = item.MaPhong })">Chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("input").on('keyup change', function (e) {
+                e.preventDefault()
+
+                var key = $('#txtkeyword').val()
+                if (key.length == false) {
+                    $('.advance-search>.row>.result-count').text("")
+                    return false
+                }
+                else {
+                    $.ajax({
+                        url: "/TimKiem/ListName",
+                        data: { "search": key },
+                        dataType: "json",
+                        type: "POST",
+                        success: function (response) {
+                            let data = ""
+                            $.each(response.data, function (i, item) {
+                                data += '<div class="kq" style="margin-top: 10px;">'
+                                data += '<a href="@Url.Action("ChiTietPhong","PhongNhaOGhep")' +"/"+ item.maphong + '">' + item.diachi + '</a>'
+                                data += '</div>'
+                            })
+
+                            $('.result-count').html(data)
+                        }
+                    })
+                    return false
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TimPhongTro.Models.DONTHUE>
+
+@{
+    ViewBag.Title = "DonThue";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Quản lý đơn thuê</h4>
+            </div>
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Đơn thuê</h3>
+                    <p class="text-muted">Thêm đơn thuê</p>
+                    @*<a href="@Url.Action("ThemMoiNguoiDung","QLyTaiKhoan")">*@
+                    <button type="button" title="Thêm mới" class="btn btn-success">
+                        Thêm
+                    </button>
+                    </a>
+                    @*@using (Html.BeginForm("DonThue", "QLyTin", FormMethod.Get, new { @class = "navbar-form" }))
+                        {
+
+                            <div class="input-group no-border">
+                                <input type="text" value="@ViewBag.searchString" name="searchString" class="form-control" placeholder="Tìm kiếm...">
+                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <i class="material-icons">Tìm kiếm</i>
+                                    <div class="ripple-container"></div>
+                                </button>
+                            </div>
+                        }*@
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Mã khách hàng</th>
+                                    <th>Mã phòng</th>
+                                    <th>Tình trạng</th>
+                                    <th>Ngày nhận</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var dt in Model)
+                                {
+                                    <tr>
+                                        <td>@dt.MaDon</td>
+                                        <td>@dt.MaKH</td>
+                                        <td>@dt.MaPhong</td>
+                                        <td>@dt.TinhTrang</td>
+                                        <td>@dt.NgayNhan</td>
+                                        <td>
+                                            <button type="button" rel="tooltip" title="Chỉnh sửa" class="btn btn-primary btn-link btn-sm">
+                                                <i class="material-icons">Duyệt</i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Xóa bỏ" class="btn btn-danger btn-link btn-sm">
+                                                <i class="material-icons">Xóa</i>
+                                            </button>
+                                            @if (dt.TinhTrang == "Đang chờ duyệt")
+                                            {
+                                                <a href="@Url.Action("DuyetDon","QLyTin",new { id=dt.MaDon})">
+                                                    <button type="button" rel="tooltip" title="Duyệt" class="btn btn-danger btn-link btn-sm">
+                                                        <i class="material-icons">done_outline</i>
+                                                    </button>
+                                                </a>
+                                            }
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

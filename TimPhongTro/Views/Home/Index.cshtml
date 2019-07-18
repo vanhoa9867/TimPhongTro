@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero-banner">
+    <div class="container text-center">
+        <span class="hero-banner-icon"><i class="flaticon-sing"></i></span>
+        <p>TÌM LÀ CÓ!!!</p>
+        <h1>KHÔNG VIỆC GÌ KHÓ</h1>
+        <!--TimKiem-->
+        <div class="s009">
+            <form>
+                <div class="inner-form">
+                    <div class="basic-search">
+                        <div class="input-field">
+                            <input id="txtkeyword" type="text" name="keyword" placeholder="Nhập nơi cần tìm.." />
+                            <div class="icon-wrap">
+                                <svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advance-search">
+                        <div class="container">
+                            <div class="row">
+                                <div class="result-count" style="margin: auto;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <!--TimKiemEnd-->
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a class="button button-header mr-3 mb-2" href="@Url.Action("TinNhaTro", "PhongNhaOGhep")">Tin Nhà Nguyên Căn</a>
+                    <a class="button button-header mb-2" href="@Url.Action("TinPhongTro", "PhongNhaOGhep")">Tin Phòng Trọ - Ở ghép</a>
+                </div>
+            </div>
+        </div>
+</section>
+<section class="section-margin">
+    <div class="container">
+        <div class="section-intro text-center pb-98px">
+            <h2 class="primary-text">Tại sao nên chọn chúng tôi</h2>
+            <img src="~/Content/img/home/section-style.png" alt="">
+        </div>
+        <div class="d-lg-flex justify-content-between">
+            <div class="card-feature mb-5 mb-lg-0">
+                <div class="feature-icon">
+                    <i class="flaticon-prize"></i>
+                </div>
+                <h3>Nhanh chóng tiện lợi</h3>
+                <p>Bạn là sinh viên, công nhân và ngại ngùng khi đi tìm cho mình một căn phòng mơ ước</p>
+            </div>
+            <div class="card-feature mb-5 mb-lg-0">
+                <div class="feature-icon">
+                    <i class="flaticon-earth-globe"></i>
+                </div>
+                <h3>Giá rẻ vô địch</h3>
+                <p>Chúng tôi hướng đến đối tượng sinh viên, công nhân. Các bạn yên tâm nhé</p>
+            </div>
+            <div class="card-feature mb-5 mb-lg-0">
+                <div class="feature-icon">
+                    <i class="flaticon-sing"></i>
+                </div>
+                <h3>Thông tin trung thực, cập nhật</h3>
+                <p>Tất cả phòng trọ trên Timphongtro.com đều được đội ngũ Timphongtro.com xác minh và cập nhật thường xuyên</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-padding--small bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 align-self-center mb-5 mb-lg-0">
+                <div class="innovative-wrapper">
+                    <h3 class="primary-text">Innovative With Experience <br class="d-none d-xl-block"> UX Design 2019</h3>
+                    <p class="h4 primary-text2 mb-3">Where The business World Meets</p>
+                    <p>Morning steas great earth for divide our good sixth called abunda itseld appear fisrd seaton upon above may bearing all moveth morning make subdue stars they are a goreat eart divide our good sixth one of that</p>
+                </div>
+            </div>
+            <div class="col-lg-6 pl-xl-5">
+                <ul class="clockdiv text-center" id="clockdiv">
+                    <li class="clockdiv-single clockdiv-day">
+                        <h1 class="days">01</h1>
+                        <span class="smalltext">Days</span>
+                    </li>
+                    <li class="clockdiv-single clockdiv-hour">
+                        <h1 class="hours">07</h1>
+                        <span class="smalltext">Hours</span>
+                    </li>
+                    <li class="clockdiv-single clockdiv-minute">
+                        <h1 class="minutes">2019</h1>
+                        <span class="smalltext">Mins</span>
+                    </li>
+                </ul>
+                <div class="clockdiv-content text-center">
+                    <p class="h4 primary-text2 mb-2">January 20 -22, 2019 in Buffelo City</p>
+                    <a class="button button-link" href="#">Get Ticket</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="speaker-bg section-padding">
+    <div class="container">
+        <div class="section-intro section-intro-white text-center pb-98px">
+            <h1 class="section-intro__title" style="padding: 50px;">
+                Bạn có nhà trọ muốn người trọ tìm thấy trên Timphongtro.com?
+            </h1>
+            <a class="button button-header" href="@Url.Action("DangTinNgay","DangTin")">ĐĂNG TIN NGAY</a>
+        </div>
+    </div>
+</section>
+
+<!--Tim Kiem-->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("input").on('keyup change', function (e) {
+                e.preventDefault()
+
+                var key = $('#txtkeyword').val()
+                if (key.length == false) {
+                    $('.advance-search>.row>.result-count').text("")
+                    return false
+                }
+                else {
+                    $.ajax({
+                        url: "/TimKiem/ListName",
+                        data: { "search": key },
+                        dataType: "json",
+                        type: "POST",
+                        success: function (response) {
+                            let data = ""
+                            $.each(response.data, function (i, item) {
+                                data += '<div class="kq" style="margin-top: 10px;">'
+                                data += '<a href="@Url.Action("ChiTietPhong","PhongNhaOGhep")' +"/"+ item.maphong + '">' + item.diachi + '</a>'
+                                data += '</div>'
+                            })
+
+                            $('.result-count').html(data)
+                        }
+                    })
+                    return false
+                }
+            });
+        });
+    </script>
+}

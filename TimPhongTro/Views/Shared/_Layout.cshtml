@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="~/Content/img/free_horizontal_on_white_by_logaster.png" type="image/png">
+
+    <link rel="stylesheet" href="~/Content/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/vendors/linericon/style.css">
+    <link rel="stylesheet" href="~/Content/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/vendors/flat-icon/font/flaticon.css">
+    <link rel="stylesheet" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/phongtro.css">
+
+    @RenderSection("stylesheets", required: false)
+</head>
+<body>
+    <header class="header_area">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container box_1620">
+                    <a class="navbar-brand logo_h" href="@Url.Action("Index", "Home")"><img src="~/Content/img/free_horizontal_on_white_by_logaster.png" alt="" style=" width: 175px;"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav justify-content-end">
+                            <li id="Index" class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                            <li id="About" class="nav-item"><a class="nav-link" href="@Url.Action("TinPhongTro","PhongNhaOGhep")">Tin Phòng</a></li>
+                            <li id="Speaker" class="nav-item"><a class="nav-link" href="@Url.Action("Speaker","Home")">Cộng Đồng</a>
+                            <li id="Contact" class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Home")">Liên Hệ</a></li>
+                            @if (Session["NguoiDung"] == null)
+                            {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("DangNhap","NguoiDung")" class="nav-link">Đăng Nhập</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("DangKy","NguoiDung")" class="nav-link">Đăng ký</a>
+                                </li>
+                            }
+                            else if (Session["NguoiDung"] != null)
+                            {
+                                <li id="DangTin" class="nav-item submenu dropdown">
+                                    <a href="@Url.Action("DangTinNgay","DangTin")" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                       aria-expanded="false">Đăng Tin</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("OGhep","DangTin")">Tìm người ở ghép</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Cho thuê nhà</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("PhongTro","DangTin")">Cho thuê phòng</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                       aria-expanded="false">@Session["NguoiDung"]</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("ThongTin","NguoiDung")">Thông tin</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("TinDaDang","NguoiDung")">Tin đã đăng</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("ListDonThue","NguoiDung")">Đơn thuê</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="blog-details.html">Đổi mật khẩu</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("DangXuat","NguoiDung")">Đăng xuất</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div style="margin-bottom: 200px">
+        @RenderBody()
+    </div>
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Thông tin thêm</h6>
+                        <div class="row">
+                            <div class="col">
+                                <ul>
+                                    <li><a href="#">vanhoa9867@gmail.com</a></li>
+                                    <li><a href="#">0987087395</a></li>
+                                    <li><a href="#">90/36 đường số 4, phường Hiệp Bình Phước, quận Thủ Đức, thành phố Hồ Chí Minh</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Liên kết</h6>
+                        <div class="row">
+                            <div class="col">
+                                <ul>
+                                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                                    <li><a href="@Url.Action("About","Home")">Về chúng tôi</a></li>
+                                    <li><a href="@Url.Action("TinPhongTro","PhongNhaOGhep")">Phòng còn trống</a></li>
+                                    <li><a href="@Url.Action("DangTinNgay","DangTin")">Đăng tin</a></li>
+                                </ul>
+                            </div>
+                            @*<div class="col">
+                                    <ul>
+                                        <li><a href="#">Team</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Newsletter</h6>
+                        <p>
+                            For business professionals caught between high OEM price and mediocre print and graphic output.
+                        </p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
+                                <div class="input-group d-flex flex-row">
+                                    <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                    <button class="btn bb-btn"><span class="lnr lnr-location"></span></button>
+                                </div>
+                                <div class="mt-10 info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">InstaFeed</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="~/Content/img/instagram/i1.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i2.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i3.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i4.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i5.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i6.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i7.jpg" alt=""></li>
+                            <li><img src="~/Content/img/instagram/i8.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <p class="col-lg-8 col-sm-12 footer-text m-0 text-center text-lg-left">
+                        Copyright &copy;
+                        All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <div class="col-lg-4 col-sm-12 footer-social text-center text-lg-right">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Content/js/mail-script.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            var pathname = window.location.pathname;
+            switch (pathname) {
+                case '':
+                    $("#Index").addClass(' active');
+                    break;
+                case '/Home/About':
+                    $("#TinPhongTro").addClass(' active');
+                    break;
+                case '/Home/Speaker':
+                    $("#Speaker").addClass(' active');
+                    break;
+                case '/NguoiDung/DangNhap':
+                    $("#Login").addClass(' active');
+                    break;
+                case '/Home/Contact':
+                    $("#Contact").addClass(' active');
+                    break;
+            }
+        })
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3"></script>
+</body>
+</html>

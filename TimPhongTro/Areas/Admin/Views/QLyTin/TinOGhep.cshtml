@@ -1,0 +1,106 @@
+﻿@model IEnumerable<TimPhongTro.Models.PHONGTRO>
+
+@{
+    ViewBag.Title = "TinOGhep";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title"></h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Quản trị</a></li>
+                    <li class="active">Quản lí thông tin ở ghép</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Thông tin ở ghép</h3>
+                    <p class="text-muted">Thêm tin ở ghép</p>
+                    <a href="@Url.Action("ThemMoiPhong", "QLyTin")">
+                        <button type="button" title="Thêm mới" class="btn btn-success">
+                            Thêm
+                        </button>
+                    </a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Số Phòng</th>
+                                    <th>Diện thích</th>
+                                    <th>Giá thuê</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số người ở</th>
+                                    <th>Đã nhận</th>
+                                    <th>Ngày cập nhật</th>
+                                    <th>Tình trạng</th>
+                                    @*<th>Ảnh</th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var nd in Model)
+                                {
+                                    if (nd.Loai == "Ở ghép")
+                                    {
+                                        <tr>
+                                            <td>@nd.SoPhong</td>
+                                            <td>@nd.DienTich</td>
+                                            <td>@nd.GiaThue</td>
+                                            <td>@nd.DiaChi</td>
+                                            <td>@nd.SoNguoiO</td>
+                                            @*<td><img src="@nd.Anh" alt=""></td>*@
+                                            @if (@nd.DaNhan == null)
+                                            {
+                                                <td>Chưa</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>Rồi</td>
+                                            }
+                                            <td>@nd.NgayCapNhat.Value.Day/@nd.NgayCapNhat.Value.Month/@nd.NgayCapNhat.Value.Year</td>
+
+
+                                            <td>@nd.TinhTrang</td>
+                                            @*<td>@nd.Anh</td>*@
+                                            <td>
+                                                <a href="@Url.Action("SuaTinPhong","QLyTin",new { id = nd.MaPhong })">
+                                                    <button type="button" rel="tooltip" title="Chỉnh sửa" class="btn btn-link btn-sm">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="@Url.Action("XoaTinPhong","QLyTin",new { id = nd.MaPhong })">
+                                                    <button type="button" rel="tooltip" title="Xóa bỏ" class="btn btn-link btn-sm">
+                                                        <i class="fa fa-remove"></i>
+                                                    </button>
+                                                </a>
+                                                @if (nd.TinhTrang == "Chưa duyệt")
+                                                {
+                                                    <a href="@Url.Action("Duyet","QLyTin",new { id = nd.MaPhong })">
+                                                        <button type="button" rel="tooltip" title="Duyệt" class="btn btn-link btn-sm">
+                                                            <i class="fa fa-check"></i>
+                                                        </button>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></h2>
+

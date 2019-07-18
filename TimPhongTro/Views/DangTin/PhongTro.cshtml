@@ -1,0 +1,95 @@
+﻿@model TimPhongTro.Models.PHONGTRO
+
+@{
+    ViewBag.Title = "Đăng tin cho thuê phòng trọ";
+    Layout = "~/Views/Shared/_LayoutDangTin.cshtml";
+}
+
+<div class="header">
+    <h1>Thông tin phòng cho thuê</h1>
+</div>
+<div class="main-content">
+    <div class="contact-w3">
+        @using (Html.BeginForm("PhongTro", "DangTin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+        <form action="#" method="post">
+            <label>Số phòng</label>
+            @Html.TextBoxFor(x => x.SoPhong, new { @class = "form-control form-control-line" })
+            <div class="row">
+                <div class="contact-left-w3">
+                    <label>Diện tích</label>
+                    @Html.TextBoxFor(x => x.DienTich, new { @class = "form-control form-control-line" })
+                </div>
+                <div class="contact-right-w3l">
+                    <label>Địa chỉ</label>
+                    @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control form-control-line" })
+                </div>
+                <div class="clear"></div>
+            </div>
+            <label>Giá thuê</label>
+            @Html.TextBoxFor(x => x.GiaThue, new { @class = "form-control form-control-line" })
+            <div class="row1">
+                <label>Mô tả</label>
+                @Html.TextAreaFor(x => x.MoTa, new { @class = "form-control form-control-line" })
+            </div>
+            <div class="row1">
+                <div class="form-group">
+                    <label>Ảnh phòng</label>
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" type="file" id="Anh"
+                               name="Anh"
+                               onchange="readURL(this);" accept="image/*" />
+                        <div class="drag-text">
+                            <h3>Kéo hình ảnh vào đây</h3>
+                        </div>
+                    </div>
+                    <div class="file-upload-content">
+                        <img class="file-upload-image" src="#" alt="your image" />
+                        <div class="image-title-wrap">
+                            <button type="button" onclick="removeUpload()" class="remove-image">
+                                Xoá
+                                <span class="image-title"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @ViewBag.error1
+            <input type="submit" value="Đăng tin">
+        </form>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Content/js/jquery-3.4.1.min.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader()
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide()
+                    $('.file-upload-image').attr('src', e.target.result)
+                    $('.file-upload-content').show()
+                    $('.image-title').html(input.files[0].name)
+                }
+                reader.readAsDataURL(input.files[0])
+            } else {
+                removeUpload()
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone())
+            $('.file-upload-content').hide()
+            $('.image-upload-wrap').show()
+        }
+
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping')
+        })
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping')
+        })
+    </script>
+}
